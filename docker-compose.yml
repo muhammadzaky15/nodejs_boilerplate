@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+    ports:
+      - 33060:3306
+    networks:
+      - node_network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 4000:8080
+    networks:
+      - node_network
+
+  nodejs:
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    build:
+      context: .
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=12345678
+      - DB_PORT=3306
+      - DB_DB=belajar-node
+    depends_on:
+      - db
+    networks:
+      - node_network
+
+networks:
+  node_network:
+    name: node_network 
