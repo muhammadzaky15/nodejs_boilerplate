@@ -10,4 +10,4 @@ RUN mkdir data
 
 EXPOSE 3000
 
-CMD ["nodemon"]
+ENTRYPOINT npm install && nodemon
