@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-pino-logger": "^4.0.0",
     "fastest-validator": "^0.6.17",
     "ioredis": "^4.10.0",
